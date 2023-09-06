@@ -84,11 +84,11 @@ hypar["model"] = ISNetDIS()
 # Build Model
 net = build_model(hypar, device)
 
-def inference(image_path):
-    image_tensor, orig_size = load_image(image_path, hypar)
+# Modified inference function
+def inference(image: Image.Image):
+    image_tensor, orig_size = load_image(image, hypar)
     mask = predict(net, image_tensor, orig_size, hypar, device)
     pil_mask = Image.fromarray(mask).convert('L')
-    im_rgb = Image.open(image_path).convert("RGB")
-    im_rgba = im_rgb.copy()
+    im_rgba = image.copy()
     im_rgba.putalpha(pil_mask)
     return im_rgba, pil_mask
