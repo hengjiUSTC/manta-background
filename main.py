@@ -17,7 +17,7 @@ app.add_middleware(
 )
 
 
-@app.post("/process/")
+@app.post("/process")
 async def process_image(file: UploadFile = File(...)):
     image = Image.open(file.file).convert("RGB")
 
