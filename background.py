@@ -11,7 +11,7 @@ import warnings
 warnings.filterwarnings("ignore")
 
 # Project imports
-from data_loader_cache import normalize, im_reader, im_preprocess 
+from data_loader_cache import normalize, im_preprocess 
 from models import *
 
 # Helpers
@@ -35,8 +35,8 @@ class GOSNormalize(object):
 
 transform =  transforms.Compose([GOSNormalize([0.5, 0.5, 0.5], [1.0, 1.0, 1.0])])
 
-def load_image(im_path, hypar):
-    im, im_shp = im_preprocess(im_reader(im_path), hypar["cache_size"])
+def load_image(image, hypar):
+    im, im_shp = im_preprocess(np.array(image), hypar["cache_size"])
     im = torch.divide(im, 255.0)
     shape = torch.from_numpy(np.array(im_shp))
     return transform(im).unsqueeze(0), shape.unsqueeze(0)
