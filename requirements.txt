@@ -1,0 +1,8 @@
+torch
+torchvision
+requests
+gdown
+matplotlib
+opencv-python
+Pillow
+scikit-image
