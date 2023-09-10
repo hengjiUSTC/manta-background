@@ -6,7 +6,12 @@ from background import inference
 from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI(docs_url="/jhdc")
-origins = ["http://localhost:5173", "https://mantaverse.xyz"]
+origins = [
+    "http://localhost:5173",
+    "https://mantaverse.xyz",
+    "https://www.mantaverse.xyz",
+    "https://demomanta.mantaverse.xyz"
+]
 
 app.add_middleware(
     CORSMiddleware,
